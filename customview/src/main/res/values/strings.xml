@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CustomView</string>
+
+    <string name="pass_word_hint">请输入密码</string>
+</resources>
