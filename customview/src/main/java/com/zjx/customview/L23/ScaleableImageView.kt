@@ -1,6 +1,9 @@
 package com.zjx.customview.L23
 
+import android.animation.Animator
+import android.animation.ObjectAnimator
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
@@ -8,6 +11,7 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
+import androidx.core.animation.addListener
 import androidx.core.view.GestureDetectorCompat
 import com.zjx.customview.R
 import com.zjx.customview.dp
@@ -25,16 +29,24 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
     private var smallScale = 0f//最大的放大倍数
     private var bigScale = 0f//
     private var currentScale = 1f
-    private val bitmapWidth = 200f.dp
-    private val bitmap = getBitmap(resources, R.mipmap.xiaoxin, bitmapWidth.toInt())
+        get
+        set(value) {
+            field = value
+            invalidate()
+        }
+    private var bitmapWidth = 200f.dp
+    private val bitmap : Bitmap = getBitmap(resources, R.mipmap.xiaoxin, bitmapWidth.toInt())
     private val gestureDetector = GestureDetectorCompat(context, MyOnGestureListener())//滑动的手势
     private val scaleGestureDetector = ScaleGestureDetector(context, MyOnScaleGestureListener())//缩放的手势
+    private lateinit var animator: ObjectAnimator
+    private fun animatorIsInitialized() =:: animator.isInitialized
+
+    init {
+        gestureDetector.setOnDoubleTapListener(MyOnDoubleTapListener())
+    }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        originalOffsetX = (width - bitmapWidth)/2
-        originalOffsetY = (height - bitmapWidth)/2
-
         if (bitmapWidth/width > bitmapWidth/height) {
             smallScale = width/bitmapWidth
             bigScale = smallScale * 3
@@ -42,6 +54,9 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
             smallScale = height/bitmapWidth
             bigScale = smallScale * 3
         }
+        originalOffsetY = (height - bitmapWidth)/2
+        originalOffsetX = (width - bitmapWidth)/2
+        currentScale = smallScale
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -68,7 +83,7 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
         private var originalScale = 1f
         override fun onScale(detector: ScaleGestureDetector): Boolean {
             currentScale = originalScale * detector.scaleFactor
-            currentScale = max(currentScale, 1f)
+            currentScale = max(currentScale, smallScale)
             currentScale = min(currentScale, bigScale)
 
             invalidate()
@@ -146,5 +161,58 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
             }
             invalidate()
         }
+    }
+
+    private inner class MyOnDoubleTapListener: GestureDetector.OnDoubleTapListener{
+        //用户单击时调用，需要在确定用户300ms内没有点击第二次时才会调用
+        override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
+            return false
+        }
+
+        //用户双击，第二次按下时调用
+        override fun onDoubleTap(e: MotionEvent?): Boolean {
+            if (currentScale < bigScale) {
+                getAnimator(currentScale, bigScale).start()
+            } else {
+                getAnimator(bigScale, smallScale).start()
+            }
+            return false
+        }
+
+        //用户双击， 第二次按下、拖动、抬起都会调用
+        //用于双击拖拽
+        override fun onDoubleTapEvent(e: MotionEvent?): Boolean {
+            return false
+        }
+
+    }
+
+    /**
+     *
+     */
+    private fun getAnimator(startValue: Float, endValue: Float): ObjectAnimator {
+        if (!animatorIsInitialized()) {
+            animator = ObjectAnimator.ofFloat(this@ScaleableImageView, "currentScale", 0f, 1f)
+            animator.addListener(object: Animator.AnimatorListener{
+                override fun onAnimationStart(animation: Animator?) {
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    if (currentScale == smallScale) {
+                        offsetX = 0f
+                        offsetY = 0f
+                    }
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+                }
+
+                override fun onAnimationRepeat(animation: Animator?) {
+                }
+
+            })
+        }
+        animator.setFloatValues(startValue, endValue)
+        return animator
     }
 }
