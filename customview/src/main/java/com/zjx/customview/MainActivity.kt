@@ -11,10 +11,9 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import com.zjx.customview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    val binding: ActivityMainBinding by inflate()
+    val binding: com.zjx.customview.databinding.ActivityMainBinding by inflate()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
