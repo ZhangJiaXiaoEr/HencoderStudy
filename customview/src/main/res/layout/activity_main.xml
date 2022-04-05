@@ -91,7 +91,7 @@
    <!--<com.zjx.customview.L23.ScaleableImageView
        android:layout_width="match_parent"
        android:layout_height="match_parent"/>-->
-   <com.zjx.customview.L24.MultiTouchView1
+   <com.zjx.customview.L24.MultiTouchView2
        android:layout_width="match_parent"
        android:layout_height="match_parent"/>
 </LinearLayout>
