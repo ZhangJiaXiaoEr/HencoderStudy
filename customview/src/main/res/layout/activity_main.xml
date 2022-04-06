@@ -88,15 +88,15 @@
    </com.zjx.customview.L20.TagLayout>-->
 
 
-   <!--<com.zjx.customview.L23.ScaleableImageView
+   <com.zjx.customview.L23.ScaleableImageView
        android:layout_width="match_parent"
-       android:layout_height="match_parent"/>-->
+       android:layout_height="match_parent"/>
 
   <!-- <com.zjx.customview.L24.MultiTouchView3
        android:layout_width="match_parent"
        android:layout_height="match_parent"/>-->
 
-   <com.zjx.customview.L25.TwoPageView
+  <!-- <com.zjx.customview.L25.TwoPageView
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
@@ -110,5 +110,5 @@
           android:layout_height="match_parent"
           android:background="@color/teal_200"/>
 
-   </com.zjx.customview.L25.TwoPageView>
+   </com.zjx.customview.L25.TwoPageView>-->
 </RelativeLayout>

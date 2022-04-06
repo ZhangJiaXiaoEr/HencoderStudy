@@ -2,6 +2,7 @@ package com.zjx.customview.L23
 
 import android.animation.Animator
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -11,15 +12,16 @@ import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
-import androidx.core.animation.addListener
+import android.widget.OverScroller
 import androidx.core.view.GestureDetectorCompat
+import androidx.core.view.ViewCompat
 import com.zjx.customview.R
 import com.zjx.customview.dp
 import com.zjx.customview.getBitmap
 import kotlin.math.max
 import kotlin.math.min
 
-class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
+class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context, attrs), Runnable {
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var originalOffsetX = 0f//canvas初始的X偏移
@@ -35,9 +37,11 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
             invalidate()
         }
     private var bitmapWidth = 200f.dp
+    private val flipOver = 150
     private val bitmap : Bitmap = getBitmap(resources, R.mipmap.xiaoxin, bitmapWidth.toInt())
     private val gestureDetector = GestureDetectorCompat(context, MyOnGestureListener())//滑动的手势
     private val scaleGestureDetector = ScaleGestureDetector(context, MyOnScaleGestureListener())//缩放的手势
+    private val scroller: OverScroller = OverScroller(context)
     private lateinit var animator: ObjectAnimator
     private fun animatorIsInitialized() =:: animator.isInitialized
 
@@ -71,6 +75,7 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
         canvas.drawBitmap(bitmap, 0f, 0f, paint)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         var result = scaleGestureDetector.onTouchEvent(event)
         if (!scaleGestureDetector.isInProgress) {
@@ -143,10 +148,34 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
             velocityX: Float,
             velocityY: Float,
         ): Boolean {
+            flip(velocityX, velocityY)
             return false
         }
 
     }
+
+    /**
+     * 手指抬起之后进行惯性滑动
+     */
+    private fun flip(velocityX: Float,
+                     velocityY: Float) {
+        if (currentScale > smallScale) {
+            //初始化滑动
+            scroller.fling(offsetX.toInt(), offsetY.toInt(),
+                velocityX.toInt(), velocityY.toInt(),
+                (-(bitmapWidth*currentScale - width)/2).toInt(),
+                ((bitmapWidth*currentScale - width)/2).toInt(),
+                (-(bitmapWidth*currentScale - height)/2).toInt(),
+                ((bitmapWidth*currentScale - height)/2).toInt(),
+                flipOver, flipOver)
+            //下一帧刷新
+            ViewCompat.postOnAnimation(this, this)
+        }
+    }
+
+    /**
+     * 手指在屏幕上时滑动
+     */
     private fun scroll(distanceX: Float, distanceY: Float) {
         if (currentScale > smallScale) {
             if (bitmapWidth*currentScale > width) {
@@ -170,8 +199,14 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
         }
 
         //用户双击，第二次按下时调用
-        override fun onDoubleTap(e: MotionEvent?): Boolean {
+        override fun onDoubleTap(e: MotionEvent): Boolean {
             if (currentScale < bigScale) {
+                offsetX = (width/2 - e.x)*(bigScale-currentScale)
+                    .coerceAtLeast(-(bitmapWidth*bigScale - width)/2)
+                    .coerceAtMost((bitmapWidth*bigScale - width)/2)
+                offsetY = (height/2 - e.y)*(bigScale-currentScale)
+                    .coerceAtLeast(-(bitmapWidth*bigScale - height)/2)
+                    .coerceAtMost((bitmapWidth*bigScale - height)/2)
                 getAnimator(currentScale, bigScale).start()
             } else {
                 getAnimator(bigScale, smallScale).start()
@@ -198,7 +233,7 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
                 }
 
                 override fun onAnimationEnd(animation: Animator?) {
-                    if (currentScale == smallScale) {
+                    if (this@ScaleableImageView.currentScale == this@ScaleableImageView.smallScale) {
                         offsetX = 0f
                         offsetY = 0f
                     }
@@ -214,5 +249,17 @@ class ScaleableImageView(context: Context, attrs: AttributeSet?) : View(context,
         }
         animator.setFloatValues(startValue, endValue)
         return animator
+    }
+
+    override fun run() {
+        //计算此时的位置，如果滑动结束就停止
+        if (scroller.computeScrollOffset()) {
+            //将此时的位置应用于界面
+            offsetX = scroller.currX.toFloat()
+            offsetY = scroller.currY.toFloat()
+            invalidate()
+            //下一帧刷新
+            ViewCompat.postOnAnimation(this, this)
+        }
     }
 }
