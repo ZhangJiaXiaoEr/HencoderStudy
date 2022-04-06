@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -88,7 +88,27 @@
    </com.zjx.customview.L20.TagLayout>-->
 
 
-   <com.zjx.customview.L23.ScaleableImageView
+   <!--<com.zjx.customview.L23.ScaleableImageView
        android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
-</LinearLayout>
+       android:layout_height="match_parent"/>-->
+
+  <!-- <com.zjx.customview.L24.MultiTouchView3
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>-->
+
+   <com.zjx.customview.L25.TwoPageView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@color/purple_500"/>
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@color/teal_200"/>
+
+   </com.zjx.customview.L25.TwoPageView>
+</RelativeLayout>
