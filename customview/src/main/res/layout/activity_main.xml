@@ -112,7 +112,7 @@
 
    </com.zjx.customview.L25.TwoPageView>-->
 
-   <androidx.drawerlayout.widget.DrawerLayout
+   <com.zjx.customview.L26.DragGroupView
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
@@ -148,5 +148,5 @@
           android:layout_height="match_parent"
           android:background="@color/black"/>
 
-   </androidx.drawerlayout.widget.DrawerLayout>
+   </com.zjx.customview.L26.DragGroupView>
 </RelativeLayout>
