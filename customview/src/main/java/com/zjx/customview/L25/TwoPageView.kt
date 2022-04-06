@@ -29,7 +29,7 @@ class TwoPageView(context: Context, attrs: AttributeSet?) : ViewGroup(context, a
         var childeRight = width
         for (i in 0 until childCount) {
             val child = getChildAt(i)
-            child.layout(childLeft, top, childeRight, height)
+            child.layout(childLeft, top, childeRight, bottom)
             childLeft += width
             childeRight += height
         }
@@ -83,6 +83,7 @@ class TwoPageView(context: Context, attrs: AttributeSet?) : ViewGroup(context, a
             MotionEvent.ACTION_UP->{
                 //计算手指抬起时的滑动速度，并设置一个最大的滑动速度
                 velocityTracker.computeCurrentVelocity(1000, maxVelocity.toFloat())
+                //获取到手指抬起时的滑动速度
                 val vx = velocityTracker.xVelocity
                 val scrollX = scrollX
                 val targetPage = if (abs(vx) < minVelocity) {//慢速滑动
