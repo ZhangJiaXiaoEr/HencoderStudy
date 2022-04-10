@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/imageview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/imageview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start"
+        app:duration="1500">
+        <KeyFrameSet>
+
+            <KeyAttribute
+                app:motionTarget="@+id/imageview"
+                app:framePosition="50"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:alpha="0.5"
+                >
+                <CustomAttribute
+                    app:attributeName="background"
+                    app:customColorValue="@color/purple_700"/>
+
+            </KeyAttribute>
+<!--            <KeyPosition-->
+<!--                app:motionTarget="@+id/imageview"-->
+<!--                app:framePosition="20"-->
+<!--                app:keyPositionType="parentRelative"-->
+<!--                app:percentX="0.75"-->
+<!--                app:percentY="0.25"/>-->
+
+<!--            <KeyPosition-->
+<!--                app:motionTarget="@id/imageview"-->
+<!--                app:framePosition="80"-->
+<!--                app:keyPositionType="parentRelative"-->
+<!--                app:percentX="0.25"-->
+<!--                app:percentY="0.75"/>-->
+
+<!--            正向动画到90%时变成另一个图片（app:onCross="changeImage"），反向90%时变回原来的图片（app:onNegativeCross="reverImage"）-->
+<!--            <KeyTrigger-->
+<!--                app:motionTarget="@+id/imageview"-->
+<!--                app:framePosition="90"-->
+<!--                app:onCross="changeImage" />-->
+<!--            <KeyTrigger-->
+<!--                app:motionTarget="@+id/imageview"-->
+<!--                app:framePosition="90"-->
+<!--                app:onNegativeCross="reverImage" />-->
+
+        </KeyFrameSet>
+
+        <OnClick app:targetId="@+id/imageview"
+            app:clickAction="toggle"/>
+
+    </Transition>
+</MotionScene>

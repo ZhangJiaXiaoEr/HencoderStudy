@@ -17,6 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".L28.MotionLayoutActivity1"/>
+        <activity android:name=".L28.KeyFrameActivity" />
     </application>
 
 </manifest>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,146 +7,28 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-<!--   <com.zjx.customview.L15.FancyFlipView-->
-<!--       android:id="@+id/fancy_flip_view"-->
-<!--       android:layout_width="match_parent"-->
-<!--       android:layout_height="match_parent"/>-->
+   <androidx.appcompat.widget.AppCompatButton
+       android:id="@+id/simple_motion"
+       android:layout_width="0dp"
+       android:layout_height="80dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.15"
+       app:layout_constraintWidth_percent="0.7"
+       android:text="SimpleMotion"/>
 
-<!--   <com.zjx.customview.L16.DrawableView-->
-<!--       android:layout_width="150dp"-->
-<!--       android:layout_height="150dp"-->
-<!--       />-->
-   <!--<com.zjx.customview.L17.MaterialEditText
-       android:layout_width="200dp"
-       android:layout_height="50dp"
-       android:textSize="15sp"
-       android:hint="@string/pass_word_hint"/>-->
+   <androidx.appcompat.widget.AppCompatButton
+       android:id="@+id/keyframe_activity"
+       android:layout_width="0dp"
+       android:layout_height="80dp"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintVertical_bias="0.3"
+       app:layout_constraintWidth_percent="0.7"
+       android:text="KeyFrameActivity"/>
 
-<!--   <com.zjx.customview.L19.SquareImageView-->
-<!--       android:layout_width="300dp"-->
-<!--       android:layout_height="400dp"-->
-<!--       android:src="@mipmap/xiaoxin"-->
-<!--       />-->
-
-   <!--<com.zjx.customview.L19.CircleView
-       android:layout_width="250dp"
-       android:layout_height="250dp"
-       android:background="@color/teal_200"/>-->
-   <!--<com.zjx.customview.L20.TagLayout
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content">
-
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="北京"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="上海"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="天津"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="重庆"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="石家庄"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="深圳"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="广州"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="台湾"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="香港"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="澳门"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="乌鲁木齐"/>
-      <com.zjx.customview.L20.ColorTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="乌鲁木齐"/>
-
-   </com.zjx.customview.L20.TagLayout>-->
-
-
-   <!--<com.zjx.customview.L23.ScaleableImageView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"/>-->
-
-  <!-- <com.zjx.customview.L24.MultiTouchView3
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"/>-->
-
-  <!-- <com.zjx.customview.L25.TwoPageView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/purple_500"/>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/teal_200"/>
-
-   </com.zjx.customview.L25.TwoPageView>-->
-
-   <com.zjx.customview.L26.DragGroupView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/purple_200"/>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/teal_200"/>
-
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/purple_500"/>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/teal_700"/>
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/purple_700"/>
-
-
-      <View
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/black"/>
-
-   </com.zjx.customview.L26.DragGroupView>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

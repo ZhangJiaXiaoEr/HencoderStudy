@@ -4,6 +4,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import com.zjx.customview.L28.KeyFrameActivity
+import com.zjx.customview.L28.MotionLayoutActivity1
 
 class MainActivity : AppCompatActivity() {
     val binding: com.zjx.customview.databinding.ActivityMainBinding by inflate()
@@ -18,6 +21,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         objectAnimatorText()
+        click()
+    }
+
+    private fun click() {
+        binding.simpleMotion.setOnClickListener {
+            startActivity(Intent(this@MainActivity, MotionLayoutActivity1::class.java))
+        }
+        binding.keyframeActivity.setOnClickListener {
+            startActivity(Intent(this@MainActivity, KeyFrameActivity::class.java))
+        }
     }
 
     private fun viewPropertyAnimator() {
