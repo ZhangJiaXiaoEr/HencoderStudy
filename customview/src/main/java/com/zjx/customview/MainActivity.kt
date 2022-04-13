@@ -12,24 +12,28 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import com.zjx.customview.L28.DianZanActivity
 import com.zjx.customview.L28.KeyFrameActivity
 import com.zjx.customview.L28.MotionLayoutActivity1
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
     val binding: com.zjx.customview.databinding.ActivityMainBinding by inflate()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         objectAnimatorText()
         click()
     }
 
     private fun click() {
         binding.simpleMotion.setOnClickListener {
-            startActivity(Intent(this@MainActivity, MotionLayoutActivity1::class.java))
+//            startActivity(Intent(this@MainActivity, MotionLayoutActivity1::class.java))
+            binding.bubble.setImageResource(R.mipmap.xiaoxin)
         }
         binding.keyframeActivity.setOnClickListener {
             startActivity(Intent(this@MainActivity, KeyFrameActivity::class.java))
+        }
+        binding.dianzanActivity.setOnClickListener {
+            startActivity(Intent(this@MainActivity, DianZanActivity::class.java))
         }
     }
 

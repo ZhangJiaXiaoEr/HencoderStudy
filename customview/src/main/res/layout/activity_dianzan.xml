@@ -4,18 +4,20 @@
     android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/activity_keyframe_scene"
-    app:showPaths="true"
-    >
+    app:layoutDescription="@xml/dianzan_forward_scene">
 
-    <com.zjx.customview.L28.MyImage
+    <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageview"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/xiaoxin"
+        app:altSrc="@mipmap/check_yes"
+        android:src="@mipmap/check_no"
+        app:overlay="false"
+        app:crossfade="0"
         />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

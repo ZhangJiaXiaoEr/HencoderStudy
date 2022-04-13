@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".L28.MotionLayoutActivity1"/>
         <activity android:name=".L28.KeyFrameActivity" />
+        <activity android:name=".L28.DianZanActivity" />
     </application>
 
 </manifest>

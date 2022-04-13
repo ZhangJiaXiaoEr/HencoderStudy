@@ -55,7 +55,7 @@
                 motion:customFloatValue="0" />
             <CustomAttribute
                 motion:attributeName="saturation"
-                motion:customFloatValue="1" />
+                motion:customFloatValue="1" />//图片颜色饱和度
             <CustomAttribute
                 motion:attributeName="round"
                 motion:customFloatValue="0" />

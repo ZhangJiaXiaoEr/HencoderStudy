@@ -38,29 +38,30 @@
                     app:customColorValue="@color/purple_700"/>
 
             </KeyAttribute>
-<!--            <KeyPosition-->
-<!--                app:motionTarget="@+id/imageview"-->
-<!--                app:framePosition="20"-->
-<!--                app:keyPositionType="parentRelative"-->
-<!--                app:percentX="0.75"-->
-<!--                app:percentY="0.25"/>-->
+            <KeyPosition
+                app:motionTarget="@+id/imageview"
+                app:framePosition="20"
+                app:keyPositionType="parentRelative"
+                app:percentX="0.75"
+                app:percentY="0.25"
+                />
 
-<!--            <KeyPosition-->
-<!--                app:motionTarget="@id/imageview"-->
-<!--                app:framePosition="80"-->
-<!--                app:keyPositionType="parentRelative"-->
-<!--                app:percentX="0.25"-->
-<!--                app:percentY="0.75"/>-->
+            <KeyPosition
+                app:motionTarget="@id/imageview"
+                app:framePosition="80"
+                app:keyPositionType="parentRelative"
+                app:percentX="0.25"
+                app:percentY="0.75"/>
 
-<!--            正向动画到90%时变成另一个图片（app:onCross="changeImage"），反向90%时变回原来的图片（app:onNegativeCross="reverImage"）-->
-<!--            <KeyTrigger-->
-<!--                app:motionTarget="@+id/imageview"-->
-<!--                app:framePosition="90"-->
-<!--                app:onCross="changeImage" />-->
-<!--            <KeyTrigger-->
-<!--                app:motionTarget="@+id/imageview"-->
-<!--                app:framePosition="90"-->
-<!--                app:onNegativeCross="reverImage" />-->
+            正向动画到90%时变成另一个图片（app:onCross="changeImage"），反向90%时变回原来的图片（app:onNegativeCross="reverImage"）
+            <KeyTrigger
+                app:motionTarget="@+id/imageview"
+                app:framePosition="90"
+                app:onCross="changeImage" />
+            <KeyTrigger
+                app:motionTarget="@+id/imageview"
+                app:framePosition="90"
+                app:onNegativeCross="reverImage" />
 
         </KeyFrameSet>
 
