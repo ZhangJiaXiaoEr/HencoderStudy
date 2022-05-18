@@ -2,3 +2,5 @@ rootProject.name = "HencoderStudy"
 include ':IO'
 include ':httpstudy'
 include ':customview'
+include ':KotlinStudy'
+include ':jetpackstudy'
