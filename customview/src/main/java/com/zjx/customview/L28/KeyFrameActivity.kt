@@ -1,5 +1,6 @@
 package com.zjx.customview.L28
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -11,7 +12,6 @@ class KeyFrameActivity: AppCompatActivity(R.layout.activity_keyframe) {
     val binding: ActivityKeyframeBinding by inflate()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding.motionLayout.setTransitionListener(object : MotionLayout.TransitionListener{
             override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
             }

@@ -9,4 +9,9 @@
         <attr name="bubble_arrowWidth" format="dimension"/>
         <attr name="bubble_arrowLocation" format="integer"/>
     </declare-styleable>
+
+    <declare-styleable name="FilletTextView">
+        <attr name="solidColor" format="color"/>
+        <attr name="radius" format="integer"/>
+    </declare-styleable>
 </resources>

@@ -41,8 +41,8 @@ class MultiTouchView3(context: Context?, attrs: AttributeSet?) : View(context, a
                     val pointerId = event.getPointerId(i)
                     val path = paths.get(pointerId)
                     path.lineTo(event.getX(i), event.getY(i))
-                    invalidate()
                 }
+                invalidate()
             }
             MotionEvent.ACTION_POINTER_UP, MotionEvent.ACTION_UP->{
                 val pointerId = event.getPointerId(event.actionIndex)

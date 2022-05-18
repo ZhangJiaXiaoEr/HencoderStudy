@@ -4,7 +4,7 @@
     android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/dianzan_forward_scene">
+    app:layoutDescription="@xml/dianzan_scene">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageview"
@@ -14,8 +14,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/check_no"
         app:altSrc="@mipmap/check_yes"
-        android:src="@mipmap/check_no"
         app:overlay="false"
         app:crossfade="0"
         />

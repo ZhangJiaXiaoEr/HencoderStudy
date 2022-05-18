@@ -61,12 +61,13 @@ class BaseOperation(context: Context?, attrs: AttributeSet?) : View(context, att
 //        canvas.rotate(90f, padding+picWidth/2, padding+picWidth/2)
 
         /*********************    Matrix的几何变换    ****************************/
-//        val matrix = Matrix()
-//        matrix.preRotate(90f, padding+picWidth/2, padding+picWidth/2)
-//        matrix.postRotate(90f, padding+picWidth/2, padding+picWidth/2)
-//        matrix.postTranslate(100f, 100f)
-//        matrix.postSkew(0.5f, 0.5f, padding+picWidth/2, padding+picWidth/2)//倾斜
-//        canvas.setMatrix(matrix)
+        val matrix = Matrix()
+        matrix.preRotate(90f, padding+picWidth/2, padding+picWidth/2)
+        matrix.postRotate(90f, padding+picWidth/2, padding+picWidth/2)
+        matrix.postTranslate(100f, 100f)
+        matrix.postSkew(0.5f, 0.5f, padding+picWidth/2, padding+picWidth/2)//倾斜
+        canvas.setMatrix(matrix)
+        canvas.drawBitmap(bitmap, padding, padding, paint)
 
         /*********************    Camera的使用   ****************************/
         //简单的使用，沿着X轴旋转30°， 代码倒着写

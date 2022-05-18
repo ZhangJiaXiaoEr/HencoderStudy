@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ConstraintSet android:id="@+id/forward_start">
+        <Constraint android:id="@+id/imageview" >
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="0"/>
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/forward_end">
+        <Constraint android:id="@+id/imageview" >
+            <CustomAttribute
+                app:attributeName="crossfade"
+                app:customFloatValue="1"/>
+        </Constraint>
+    </ConstraintSet>
 
     <Transition
         android:id="@+id/forward"
-        app:constraintSetEnd="@id/imageview"
-        app:constraintSetStart="@+id/imageview"
+        app:constraintSetEnd="@id/forward_end"
+        app:constraintSetStart="@+id/forward_start"
         app:duration="500">
         <KeyFrameSet >
             <KeyAttribute
@@ -23,13 +39,21 @@
                 app:motionTarget="@+id/imageview"
                 app:framePosition="80"
                 android:scaleX="1.2"
-                android:scaleY="1.2" />
+                android:scaleY="1.2" >
+                <CustomAttribute
+                    app:attributeName="crossfade"
+                    app:customFloatValue="1" />
+            </KeyAttribute>
 
             <KeyAttribute
                 app:motionTarget="@+id/imageview"
                 app:framePosition="90"
                 android:scaleX="0.8"
-                android:scaleY="0.8" />
+                android:scaleY="0.8" >
+                <CustomAttribute
+                    app:attributeName="crossfade"
+                    app:customFloatValue="1" />
+            </KeyAttribute>
 
         </KeyFrameSet>
     </Transition>

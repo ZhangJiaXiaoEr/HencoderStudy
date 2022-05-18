@@ -25,16 +25,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun click() {
-        binding.simpleMotion.setOnClickListener {
+//        binding.simpleMotion.setOnClickListener {
 //            startActivity(Intent(this@MainActivity, MotionLayoutActivity1::class.java))
-            binding.bubble.setImageResource(R.mipmap.xiaoxin)
-        }
-        binding.keyframeActivity.setOnClickListener {
-            startActivity(Intent(this@MainActivity, KeyFrameActivity::class.java))
-        }
-        binding.dianzanActivity.setOnClickListener {
-            startActivity(Intent(this@MainActivity, DianZanActivity::class.java))
-        }
+//        }
+//        binding.keyframeActivity.setOnClickListener {
+//            startActivity(Intent(this@MainActivity, KeyFrameActivity::class.java))
+//        }
+//        binding.dianzanActivity.setOnClickListener {
+//            startActivity(Intent(this@MainActivity, DianZanActivity::class.java))
+//        }
     }
 
     private fun viewPropertyAnimator() {
